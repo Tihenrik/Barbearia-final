@@ -99,14 +99,14 @@
 
             <div class="bg-neutral-900 rounded-lg border border-neutral-800 shadow-xl overflow-hidden">
                 
-                <div class="flex border-b border-neutral-800">
-                    <button onclick="switchAuthTab('login')" id="tab-btn-login" class="flex-1 py-3 text-[11px] font-bold text-yellow-500 border-b-2 border-yellow-500 transition-colors bg-neutral-800/50 uppercase tracking-wide">
+                <div class="flex">
+                    <button onclick="switchAuthTab('login')" id="tab-btn-login" class="flex-1 py-3 text-[11px] font-bold text-yellow-500 border-b-2 border-yellow-500 transition-colors bg-neutral-900 outline-none uppercase tracking-wide">
                         <i class="fas fa-sign-in-alt mr-1"></i> Entrar
                     </button>
-                    <button onclick="switchAuthTab('register')" id="tab-btn-register" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-900 uppercase tracking-wide">
+                    <button onclick="switchAuthTab('register')" id="tab-btn-register" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-800 outline-none uppercase tracking-wide border-b border-neutral-800">
                         <i class="fas fa-user-plus mr-1"></i> Criar Conta
                     </button>
-                    <button onclick="switchAuthTab('location')" id="tab-btn-location" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-900 uppercase tracking-wide">
+                    <button onclick="switchAuthTab('location')" id="tab-btn-location" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-800 outline-none uppercase tracking-wide border-b border-neutral-800">
                         <i class="fas fa-map-marker-alt mr-1"></i> Local
                     </button>
                 </div>
@@ -166,7 +166,7 @@
                         <div class="border-t border-neutral-800 pt-5">
                             <h3 class="text-white font-bold text-sm mb-3 uppercase tracking-wide">Fale Conosco</h3>
                             
-                            <button onclick="copyToClipboard('(16) 9821-41433', this)" class="mx-auto flex items-center justify-center gap-2 bg-green-900/20 hover:bg-green-900/30 text-green-500 border border-green-900/40 rounded-full px-5 py-2.5 transition active:scale-95 w-full max-w-[200px]">
+                            <button onclick="copyToClipboard('(16) 9821-41433', this)" class="mx-auto flex items-center justify-center gap-2 bg-green-900/20 hover:bg-green-900/30 text-green-500 border border-green-900/40 rounded-full px-5 py-2.5 transition active:scale-95 w-full max-w-[200px] outline-none">
                                 <i class="fab fa-whatsapp text-lg"></i>
                                 <span class="font-bold text-sm tracking-wide">(16) 9821-41433</span>
                             </button>
@@ -386,24 +386,26 @@
             initInfiniteScroll();
         });
 
-        // --- SISTEMA DE 3 ABAS DA TELA DE LOGIN ---
+        // --- SISTEMA DE 3 ABAS COM VISUAL CORRIGIDO ---
         window.switchAuthTab = (tabName) => {
             // Esconde todos
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // Remove estilos ativos dos botões
-            ['login', 'register', 'location'].forEach(name => {
+            
+            // Gerencia estilos dos botões (Active vs Inactive)
+            const tabs = ['login', 'register', 'location'];
+            tabs.forEach(name => {
                 const btn = document.getElementById(`tab-btn-${name}`);
-                btn.classList.remove('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
-                btn.classList.add('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
+                if(name === tabName) {
+                    // Ativo: Cor do fundo igual ao conteúdo (neutral-900), Borda Amarela
+                    btn.className = "flex-1 py-3 text-[11px] font-bold text-yellow-500 border-b-2 border-yellow-500 transition-colors bg-neutral-900 outline-none uppercase tracking-wide";
+                } else {
+                    // Inativo: Fundo mais claro (neutral-800), Borda Cinza
+                    btn.className = "flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-800 outline-none uppercase tracking-wide border-b border-neutral-800";
+                }
             });
 
-            // Ativa o conteúdo selecionado
+            // Mostra o conteúdo
             document.getElementById(`tab-content-${tabName}`).classList.add('active');
-            
-            // Ativa o botão selecionado
-            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
-            activeBtn.classList.remove('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
-            activeBtn.classList.add('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
         };
 
         function setupPhoneMask() {
