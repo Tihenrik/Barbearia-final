@@ -100,11 +100,14 @@
             <div class="bg-neutral-900 rounded-lg border border-neutral-800 shadow-xl overflow-hidden">
                 
                 <div class="flex border-b border-neutral-800">
-                    <button onclick="switchAuthTab('login')" id="tab-btn-login" class="flex-1 py-3 text-sm font-bold text-yellow-500 border-b-2 border-yellow-500 transition-colors bg-neutral-800/50">
-                        <i class="fas fa-user-circle mr-1"></i> ACESSO
+                    <button onclick="switchAuthTab('login')" id="tab-btn-login" class="flex-1 py-3 text-[11px] font-bold text-yellow-500 border-b-2 border-yellow-500 transition-colors bg-neutral-800/50 uppercase tracking-wide">
+                        <i class="fas fa-sign-in-alt mr-1"></i> Entrar
                     </button>
-                    <button onclick="switchAuthTab('location')" id="tab-btn-location" class="flex-1 py-3 text-sm font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-900">
-                        <i class="fas fa-map-marker-alt mr-1"></i> ONDE ESTAMOS
+                    <button onclick="switchAuthTab('register')" id="tab-btn-register" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-900 uppercase tracking-wide">
+                        <i class="fas fa-user-plus mr-1"></i> Criar Conta
+                    </button>
+                    <button onclick="switchAuthTab('location')" id="tab-btn-location" class="flex-1 py-3 text-[11px] font-bold text-gray-500 hover:text-gray-300 transition-colors bg-neutral-900 uppercase tracking-wide">
+                        <i class="fas fa-map-marker-alt mr-1"></i> Local
                     </button>
                 </div>
 
@@ -113,67 +116,61 @@
                         <form id="login-form" class="space-y-4">
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">E-mail</label>
-                                <input type="email" id="login-email" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="seu@email.com">
+                                <input type="email" id="login-email" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="seu@email.com">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">Senha</label>
-                                <input type="password" id="login-pass" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="******">
+                                <input type="password" id="login-pass" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="******">
                                 <div class="text-right mt-1">
                                     <button type="button" onclick="resetPassword()" class="text-xs text-gray-500 hover:text-yellow-500">Esqueci a senha</button>
                                 </div>
                             </div>
-                            <button type="submit" id="btn-login-submit" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded transition disabled:opacity-50 disabled:cursor-not-allowed">ENTRAR</button>
+                            <button type="submit" id="btn-login-submit" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded transition disabled:opacity-50 disabled:cursor-not-allowed text-sm">ENTRAR</button>
                         </form>
+                    </div>
 
-                        <form id="register-form" class="space-y-4 hidden">
+                    <div id="tab-content-register" class="tab-content">
+                         <form id="register-form" class="space-y-3">
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">Nome</label>
-                                <input type="text" id="reg-name" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="Seu Nome">
+                                <input type="text" id="reg-name" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="Seu Nome">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">Telefone (WhatsApp)</label>
-                                <input type="tel" id="reg-phone" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="(XX) XXXXX-XXXX">
+                                <input type="tel" id="reg-phone" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="(XX) XXXXX-XXXX">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">E-mail</label>
-                                <input type="email" id="reg-email" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="seu@email.com">
+                                <input type="email" id="reg-email" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="seu@email.com">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 mb-1">Senha</label>
-                                <input type="password" id="reg-pass" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600" required placeholder="******" minlength="6">
+                                <input type="password" id="reg-pass" class="w-full bg-neutral-800 border border-neutral-700 rounded p-3 text-white focus:border-yellow-500 outline-none placeholder-gray-600 text-sm" required placeholder="******" minlength="6">
                             </div>
-                            <button type="submit" id="btn-reg-submit" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded transition disabled:opacity-50 disabled:cursor-not-allowed">CADASTRAR</button>
+                            <button type="submit" id="btn-reg-submit" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded transition disabled:opacity-50 disabled:cursor-not-allowed text-sm">CADASTRAR</button>
                         </form>
-
-                        <div class="mt-6 text-center border-t border-neutral-800 pt-4">
-                            <button id="toggle-auth" class="text-sm text-yellow-500 hover:underline">Não tem conta? Cadastre-se</button>
-                        </div>
                     </div>
 
-                    <div id="tab-content-location" class="tab-content text-center space-y-6">
+                    <div id="tab-content-location" class="tab-content text-center space-y-6 pt-2">
                         <div class="space-y-2">
-                            <div class="w-16 h-16 bg-neutral-800 rounded-full flex items-center justify-center mx-auto mb-3 border border-yellow-600/30">
-                                <i class="fas fa-map-marked-alt text-2xl text-yellow-500"></i>
+                            <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center mx-auto mb-3 border border-yellow-600/30">
+                                <i class="fas fa-map-marked-alt text-xl text-yellow-500"></i>
                             </div>
-                            <h3 class="text-white font-bold text-lg">Nosso Endereço</h3>
+                            <h3 class="text-white font-bold text-base">Nosso Endereço</h3>
                             <p class="text-gray-300 text-sm leading-relaxed bg-neutral-800 p-3 rounded border border-neutral-700">
                                 Rua Manuel de Macedo, 1815<br>
                                 <span class="text-gray-500 text-xs uppercase font-bold mt-1 block">Bairro Jardim Piratininga</span>
                             </p>
                         </div>
 
-                        <div class="border-t border-neutral-800 pt-6">
-                            <h3 class="text-white font-bold text-lg mb-4">Contato</h3>
-                            <button onclick="copyToClipboard('(16) 9821-41433', this)" class="w-full bg-green-900/20 hover:bg-green-900/40 text-green-500 border border-green-900/50 rounded-xl p-4 transition group">
-                                <div class="flex items-center justify-center gap-3">
-                                    <i class="fab fa-whatsapp text-3xl group-hover:scale-110 transition-transform"></i>
-                                    <div class="text-left">
-                                        <p class="text-xs text-green-700 font-bold uppercase">WhatsApp</p>
-                                        <p class="text-lg font-bold tracking-wider">(16) 9821-41433</p>
-                                    </div>
-                                </div>
-                                <p class="text-[10px] mt-2 text-green-700/60">Toque para copiar</p>
+                        <div class="border-t border-neutral-800 pt-5">
+                            <h3 class="text-white font-bold text-sm mb-3 uppercase tracking-wide">Fale Conosco</h3>
+                            
+                            <button onclick="copyToClipboard('(16) 9821-41433', this)" class="mx-auto flex items-center justify-center gap-2 bg-green-900/20 hover:bg-green-900/30 text-green-500 border border-green-900/40 rounded-full px-5 py-2.5 transition active:scale-95 w-full max-w-[200px]">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                                <span class="font-bold text-sm tracking-wide">(16) 9821-41433</span>
                             </button>
+                            <p class="text-[10px] mt-2 text-gray-600">Toque no número para copiar</p>
                         </div>
                     </div>
                 </div>
@@ -389,23 +386,21 @@
             initInfiniteScroll();
         });
 
-        // --- SISTEMA DE ABAS DA TELA DE LOGIN ---
+        // --- SISTEMA DE 3 ABAS DA TELA DE LOGIN ---
         window.switchAuthTab = (tabName) => {
             // Esconde todos
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             // Remove estilos ativos dos botões
-            const btnLogin = document.getElementById('tab-btn-login');
-            const btnLoc = document.getElementById('tab-btn-location');
-            
-            btnLogin.classList.remove('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
-            btnLogin.classList.add('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
-            
-            btnLoc.classList.remove('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
-            btnLoc.classList.add('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
+            ['login', 'register', 'location'].forEach(name => {
+                const btn = document.getElementById(`tab-btn-${name}`);
+                btn.classList.remove('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
+                btn.classList.add('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
+            });
 
-            // Ativa o selecionado
+            // Ativa o conteúdo selecionado
             document.getElementById(`tab-content-${tabName}`).classList.add('active');
             
+            // Ativa o botão selecionado
             const activeBtn = document.getElementById(`tab-btn-${tabName}`);
             activeBtn.classList.remove('text-gray-500', 'hover:text-gray-300', 'bg-neutral-900');
             activeBtn.classList.add('text-yellow-500', 'border-yellow-500', 'bg-neutral-800/50');
@@ -460,7 +455,6 @@
                 if (user) {
                     try {
                         await fetchUserProfile(user.uid);
-                        // AQUI ESTÁ A CORREÇÃO DE SEGURANÇA E PERFORMANCE
                         await checkBlockedStatus(user.email);
                         await checkAdminStatus(user.email); 
                         
@@ -548,10 +542,8 @@
             }
         }
 
-        // --- FUNÇÃO CORRIGIDA (AGORA ECONÔMICA) ---
         async function checkBlockedStatus(email) {
             try {
-                // Correção: Busca APENAS o documento que tem este email
                 const q = query(collection(db, BLOCKED_USERS_PATH), where("email", "==", email));
                 const querySnapshot = await getDocs(q);
                 
@@ -896,11 +888,12 @@
             document.body.appendChild(textArea); textArea.focus(); textArea.select();
             try {
                 if(document.execCommand('copy')) {
-                    // Mantem o icone de whatsapp se for o botão de contato
+                     // Lógica visual específica para o botão do whatsapp
                     if (element.querySelector('.fa-whatsapp')) {
-                         const oldText = element.querySelector('.tracking-wider').innerText;
-                         element.querySelector('.tracking-wider').innerText = "Copiado!";
-                         setTimeout(() => { element.querySelector('.tracking-wider').innerText = oldText; }, 1500);
+                         const span = element.querySelector('span');
+                         const oldText = span.innerText;
+                         span.innerText = "Copiado!";
+                         setTimeout(() => { span.innerText = oldText; }, 1500);
                     } else {
                         element.classList.add('text-green-500');
                         element.innerHTML = `<i class="fas fa-check"></i> Copiado!`;
@@ -958,17 +951,8 @@
 
         const loginForm = document.getElementById('login-form');
         const regForm = document.getElementById('register-form');
-        const toggleBtn = document.getElementById('toggle-auth');
-
-        toggleBtn.onclick = () => {
-            resetAuthForms();
-            if (loginForm.classList.contains('hidden')) {
-                loginForm.classList.remove('hidden'); regForm.classList.add('hidden'); toggleBtn.innerText = "Não tem conta? Cadastre-se";
-            } else {
-                loginForm.classList.add('hidden'); regForm.classList.remove('hidden'); toggleBtn.innerText = "Já tem conta? Entrar";
-            }
-        };
-
+        
+        // Listener de Login
         loginForm.onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn-login-submit');
@@ -977,6 +961,7 @@
             catch (error) { showAlert('Acesso Negado', translateAuthError(error.code), 'error'); btn.disabled = false; btn.innerText = "ENTRAR"; }
         };
 
+        // Listener de Cadastro
         regForm.onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn-reg-submit');
